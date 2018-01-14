@@ -137,6 +137,45 @@ uint64_t Currency::baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t h
   return base_reward;
 }
 
+uint64_t Currency::rewardTimewarpPenalty(uint64_t reward, uint64_t current_timestamp, uint64_t tail_timestamp) const{
+    uint64_t targetTime = static_cast<uint64_t>(parameters::TIMEWARP_PENALTY_TARGET);
+    uint64_t solveTime = current_timestamp - tail_timestamp;
+    assert(solveTime > 0);
+    
+    if(reward == 0){
+        return 0;
+    }
+    double penalty = (1.0 - static_cast<double>(solveTime) / static_cast<double>(targetTime));
+    if(solveTime < targetTime){
+        return reward * penalty;
+    }
+    
+    return reward;
+    
+}
+
+bool Currency::getBlockReward(size_t medianSize, size_t currentBlockSize, uint64_t alreadyGeneratedCoins,
+  uint64_t fee, uint32_t height, uint64_t& reward, int64_t& emissionChange, uint64_t tail_timestamp, uint64_t current_timestamp) const {
+  assert(alreadyGeneratedCoins <= m_moneySupply);
+
+  uint64_t baseReward = baseRewardFunction(alreadyGeneratedCoins, height);
+
+  medianSize = std::max(medianSize, m_blockGrantedFullRewardZone);
+  if (currentBlockSize > UINT64_C(2) * medianSize) {
+    logger(TRACE) << "Block cumulative size is too big: " << currentBlockSize << ", expected less than " << 2 * medianSize;
+    return false;
+  }
+
+  uint64_t penalizedBaseReward = getPenalizedAmount(baseReward, medianSize, currentBlockSize);
+  
+  penalizedBaseReward = rewardTimewarpPenalty(penalizedBaseReward, current_timestamp, tail_timestamp);
+  
+  emissionChange = penalizedBaseReward;
+  reward = penalizedBaseReward + fee;
+
+  return true;
+}
+
 bool Currency::getBlockReward(size_t medianSize, size_t currentBlockSize, uint64_t alreadyGeneratedCoins,
   uint64_t fee, uint32_t height, uint64_t& reward, int64_t& emissionChange) const {
   assert(alreadyGeneratedCoins <= m_moneySupply);
@@ -150,7 +189,7 @@ bool Currency::getBlockReward(size_t medianSize, size_t currentBlockSize, uint64
   }
 
   uint64_t penalizedBaseReward = getPenalizedAmount(baseReward, medianSize, currentBlockSize);
-
+  
   emissionChange = penalizedBaseReward;
   reward = penalizedBaseReward + fee;
 

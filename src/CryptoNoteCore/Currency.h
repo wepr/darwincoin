@@ -22,7 +22,6 @@ namespace CryptoNote {
 
 #define MAX_AVERAGE_TIMESPAN          (uint64_t) parameters::DIFFICULTY_TARGET*12   // 24 minutes
 #define MIN_AVERAGE_TIMESPAN          (uint64_t) parameters::DIFFICULTY_TARGET/12  // 10s
-
     
 class AccountBase;
 
@@ -101,9 +100,13 @@ public:
 
   const Block& genesisBlock() const { return m_genesisBlock; }
   const Crypto::Hash& genesisBlockHash() const { return m_genesisBlockHash; }
-
+  
+  uint64_t rewardTimewarpPenalty(uint64_t reward, uint64_t current_timestamp, uint64_t tail_timestamp) const;
   bool getBlockReward(size_t medianSize, size_t currentBlockSize, uint64_t alreadyGeneratedCoins, uint64_t fee, uint32_t height,
   uint64_t& reward, int64_t& emissionChange) const;
+  bool getBlockReward(size_t medianSize, size_t currentBlockSize, uint64_t alreadyGeneratedCoins, uint64_t fee, uint32_t height,
+  
+  uint64_t& reward, int64_t& emissionChange, uint64_t tail_timestamp, uint64_t current_timestamp) const;
   uint64_t calculateInterest(uint64_t amount, uint32_t term, uint32_t height) const;
   uint64_t calculateTotalTransactionInterest(const Transaction& tx, uint32_t height) const;
   uint64_t getTransactionInputAmount(const TransactionInput& in, uint32_t height) const;
