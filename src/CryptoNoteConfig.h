@@ -22,7 +22,7 @@ namespace parameters {
 const uint64_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
 const size_t   CRYPTONOTE_MAX_TX_SIZE                        = 1000000000;
-const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 0x1a2638; // addresses start with "Xun3"
+const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 0x89; 
 const size_t   CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 10;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT            = 60 * 60 * 2;
 const uint64_t CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE           = 10;
@@ -103,8 +103,8 @@ const uint64_t ICO_BLOCK_REWARD	                             = (UINT64_C(1844674
 const uint64_t MAX_BLOCK_REWARD                              = (UINT64_C(1500) * parameters::COIN);
 const uint64_t REWARD_INCREASE_INTERVAL                      = (UINT64_C(264000));
 
-const char     CRYPTONOTE_NAME[]                             = "UltraNote";
-const char     GENESIS_COINBASE_TX_HEX[]                     = "010a01ff000180a3c347029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101677642503be486533f0aacb7ccce24a3d4931635fa700d62bf6b383cf26436e9";
+const char     CRYPTONOTE_NAME[]                             = "darwincoin";
+const char     GENESIS_COINBASE_TX_HEX[]                     = "";
 const uint32_t GENESIS_NONCE                                 = 70;
 const uint64_t GENESIS_TIMESTAMP                             = 1496764095;
 
@@ -138,10 +138,11 @@ const size_t   P2P_DEFAULT_HANDSHAKE_INVOKE_TIMEOUT          = 5000;          //
 const char     P2P_STAT_TRUSTED_PUB_KEY[]                    = "0000000000000000000000000000000000000000000000000000000011111111";
 
 const std::initializer_list<const char*> SEED_NODES = {
-   "seed1.ultranote.org:30000",
-   "seed2.ultranote.org:30000",
-   "seed3.ultranote.org:30000",
-   "seed4.ultranote.org:30000",
+   //"seed1.ultranote.org:30000",
+   //"seed2.ultranote.org:30000",
+   //"seed3.ultranote.org:30000",
+   //"seed4.ultranote.org:30000",
+   "127.0.0.1:17272",
 };
 
 struct CheckpointData {
@@ -157,10 +158,6 @@ __attribute__((unused))
 // You may add here other checkpoints using the following format:
 // {<block height>, "<block hash>"},
 const std::initializer_list<CheckpointData> CHECKPOINTS = {
- { 3700, "34126fea8a0168a41885358fa1f3d793a3a6d28e650da6cc9bc2de9d6ad5fc24" }, 
- { 9900, "15f3ecbb6324991c653ceed03619a735b40142d1b4777161593510f0f1d1a098" },
- { 22000, "8d444f19cc5cd46738583a001135a72b5824aa380e5006f422108eb50d9b9cca" },
- { 33000, "4e8958bcf1673bc326d6285c5f3df256f2c48c7ff85db7ef13637421a561e70e" },
 };
 
 // {BlockIndex , Version}
@@ -170,7 +167,6 @@ const std::map<const uint32_t, const uint8_t> Version = {
 
 // {BlockIndex , Hash}
 const std::map<const uint32_t, const char*> VersionCheck = {
-    {34147, "cdc7e1b2bb3df0d48d271b7f8429a847ca661a112ce5ed5898b429983e257082"}
 };
 
 } // CryptoNote
