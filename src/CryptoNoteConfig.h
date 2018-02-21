@@ -104,7 +104,7 @@ const uint64_t MAX_BLOCK_REWARD                              = (UINT64_C(1500) *
 const uint64_t REWARD_INCREASE_INTERVAL                      = (UINT64_C(264000));
 
 const char     CRYPTONOTE_NAME[]                             = "darwincoin";
-const char     GENESIS_COINBASE_TX_HEX[]                     = "010a01ff000180a3c347029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210163e6975c0726d4ce650b4d639ef8ea3aeca8be71500f6ef40a5103c40db856e2";
+const char     GENESIS_COINBASE_TX_HEX[]                     = "";
 const uint32_t GENESIS_NONCE                                 = 70;
 const uint64_t GENESIS_TIMESTAMP                             = 1496764095;
 
