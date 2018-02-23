@@ -19,9 +19,9 @@ namespace CryptoNote {
 
 namespace parameters {
 
-const uint64_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 10000000;
+const uint64_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
 const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
-const size_t   CRYPTONOTE_MAX_TX_SIZE                        = 1000000000;
+const size_t CRYPTONOTE_MAX_TX_SIZE                          = 1000000000;
 const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 0x89; 
 const size_t   CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 10;
 const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT            = 60 * 60 * 2;
@@ -104,7 +104,7 @@ const uint64_t MAX_BLOCK_REWARD                              = (UINT64_C(1500) *
 const uint64_t REWARD_INCREASE_INTERVAL                      = (UINT64_C(264000));
 
 const char     CRYPTONOTE_NAME[]                             = "darwincoin";
-const char     GENESIS_COINBASE_TX_HEX[]                     = "010a01ff000180a3c347029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101c93fc7bfef6eb929053e1d08085b2c85cadcfd522bb89428afc88fd544b4707a";
+const char     GENESIS_COINBASE_TX_HEX[]                     = "";
 const uint32_t GENESIS_NONCE                                 = 70;
 const uint64_t GENESIS_TIMESTAMP                             = 1496764095;
 
@@ -145,10 +145,10 @@ const std::initializer_list<const char*> SEED_NODES = {
    "127.0.0.1:17272",
 };
 
-struct CheckpointData {
-  uint32_t height;
-  const char* blockId;
-};
+///struct CheckpointData {
+ /// uint32_t height;
+  ///const char* blockId;
+///};
 
 
 #ifdef __GNUC__
@@ -157,17 +157,17 @@ __attribute__((unused))
 
 // You may add here other checkpoints using the following format:
 // {<block height>, "<block hash>"},
-const std::initializer_list<CheckpointData> CHECKPOINTS = {
-};
+///const std::initializer_list<CheckpointData> CHECKPOINTS = {
+///};
 
 // {BlockIndex , Version}
-const std::map<const uint32_t, const uint8_t> Version = {
-    {34147, 1}
-};
+///const std::map<const uint32_t, const uint8_t> Version = {
+   /// {34147, 1}
+///};
 
 // {BlockIndex , Hash}
-const std::map<const uint32_t, const char*> VersionCheck = {
-};
+////const std::map<const uint32_t, const char*> VersionCheck = {
+///};
 
 } // CryptoNote
 
