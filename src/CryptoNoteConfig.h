@@ -25,7 +25,7 @@ const uint64_t CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE           = 10;
 const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW             = 30;
 
 
-const uint64_t MONEY_SUPPLY				     = UINT64_C(8589869056000000000);
+const uint64_t MONEY_SUPPLY				     = UINT64_C(1000);
 
 const size_t   CRYPTONOTE_REWARD_BLOCKS_WINDOW               = 100;
 const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE     = 100000; //size of block (bytes) after which reward for block calculated using block size
@@ -94,12 +94,12 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 } // parameters
 
 const uint64_t START_BLOCK_REWARD                            = (UINT64_C(23032) * parameters::COIN);
-const uint64_t ICO_BLOCK_REWARD	                             = UINT64_C(85898690560000); 
-const uint64_t MAX_BLOCK_REWARD                              = (UINT64_C(1500) * parameters::COIN);
+const uint64_t ICO_BLOCK_REWARD	                             = UINT64_C(900);
+const uint64_t MAX_BLOCK_REWARD                              = (UINT64_C(99) * parameters::COIN);
 const uint64_t REWARD_INCREASE_INTERVAL                      = (UINT64_C(264000));
 
 const char     CRYPTONOTE_NAME[]                             = "DarwinCoin";
-const char     GENESIS_COINBASE_TX_HEX[]                     = "010a01ff000180dea0cb05029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210170b56c653b31caf3fc884589e45bbee5d5fdfb393fb42679345803f2349b06c4";
+const char     GENESIS_COINBASE_TX_HEX[]                     = "010a01ff0001e807029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121010f5dbd467d1decb172b538d810b5bbda96d50a0f63e67db806d43f0ac328acab";
 const uint32_t GENESIS_NONCE                                 = 70;
 const uint64_t GENESIS_TIMESTAMP                             = 1519632110;
 
